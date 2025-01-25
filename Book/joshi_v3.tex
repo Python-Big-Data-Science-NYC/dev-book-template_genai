@@ -148,30 +148,6 @@
 
 \setcounter{secnumdepth}{3}
 
-% titlesec (and thus titleformat) not compatible with scrbook!
-% see https://tex.stackexchange.com/questions/684543/command-textcap-unavailable-in-encoding-t1
-% \usepackage{titlesec}
-
-% \titleformat{\chapter}[display]
-%     {\usekomafont{sectioning} \usekomafont{chapter}\filleft}
-%     {\numcap\textcolor[named]{gray}\thechapter}
-%     {1em}
-%     {}
-
-% \titleformat{\section}[block]
-%     {\usekomafont{sectioning}\usekomafont{section}
-%      \tikz[overlay]  \fill[color=black,rounded corners=.2ex] (0,-1ex) rectangle (\textwidth,1em);}
-%     { \thesection}
-%     {1em}
-%     {}
-
-% \titleformat{\subsection}[block]
-%     {\usekomafont{sectioning}\usekomafont{subsection}
-%        \tikz[overlay] \fill[color=black!60] (0,-1ex) rectangle (\textwidth-2cm,1em);}
-%     { \thesubsection}
-%     {1em}
-%     {}
-
 \usepackage{lipsum}
 %%%%%%%%%%%%%%%%%%%%
 \usepackage{enumitem}
@@ -385,7 +361,7 @@
 \title{\capitalizedtext{Gen AI for Financial Risk}\\\small{Learn Agentically powered Gen AI ;  
 		Gen AI Agentic Framework for Financial Risk Analytics !}}
 \author{
-    \textaut{Shivgan Joshi}\\https://google.com
+    \textaut{Satyadhar Joshi}\\https://satyadharjoshi.com
 }
 \date{\today}
 
@@ -450,7 +426,7 @@ Something something, let's go!
 \textit{Town, Country, May 2023}
 
 %*************************************************************************
-\chapter{Intro to Gen AI in Finance in light of Agentic Framework: Trends }
+\chapter{Gen AI in Finance in light of Agentic Framework: Trends }
 %*************************************************************************
 \dictum%
 [Marc Andreessen]%author
@@ -458,6 +434,8 @@ Something something, let's go!
 } %text
 
 \section{Different Finance Areas}
+
+
 
 Here's some text in the section
 
@@ -496,14 +474,14 @@ Gen AI in Model Implementation for Financial Risk, (todo )
 Here's some text in the section second
 
 %*************************************************************************
-\chapter{Trends in Financial Risk Management}
+\chapter{Financial Risk Management in light of Gen AI aiding Regulation}
 %*************************************************************************
 \dictum%
 [Steve Jobs, 1997]%author
 {You've got to start with the customer experience and work backwards to the technology.
 } %text
 
-\section{Introduction to the Market and Credit Risk}
+\section{Market and Credit Risk}
 
 In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
 
@@ -636,11 +614,26 @@ Party Popper: \partypopper
 
 That's about it! Those should be all the components you need to write an amazing software engineering book. Good luck!
 
-\chapter{Data Engineering and Data lakes for Gen AI }
+
+As discussed by Joshi (2025) \cite{Joshi2025}, the integration of Generative AI with Big Data offers significant improvements in financial risk management.
+
+\section*{References}
+\begin{thebibliography}{9}
+	\bibitem{Joshi2025}
+	Satyadhar Joshi,
+	\textit{The Synergy of Generative AI and Big Data for Financial Risk: Review of Recent Developments},
+	International Journal For Multidisciplinary Research, 2025, Volume 7, Issue 1, pp. 1-10.
+\end{thebibliography}
+
+
+
+
+
+\chapter{Data Engineering and Data lakes for Gen AI  }
 In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
-\section{Implementation Options}
+\section{How Data is stored}
 hi
-\minisec{Chapter Objectives}
+\minisec{Learn Big Data and Vector Data Bases}
 \begin{arrows}
 	\item Some objective
 	\item Some other objective
@@ -658,9 +651,11 @@ Code snippets are of course also essential in a dev book. Here is a code snippet
 
 \chapter{Agentic Design of Full stack Gen AI system for fin risk analytics}
 In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
-\section{Intro to Full Stack paradigm}
+\section{Intro to Full Stack Python Paradigm}
+
+\section{Agent-Oriented Architectures for Financial Data Pipelines}
 hi
-\minisec{Chapter Objectives}
+\minisec{Learn Python for Design}
 \begin{arrows}
 	\item Some objective
 	\item Some other objective
@@ -678,9 +673,9 @@ Code snippets are of course also essential in a dev book. Here is a code snippet
 
 
 
-\chapter{ Agent-Oriented Architectures for Financial Data Pipelines }
+\chapter{ Using Public Facing LLM Models Like ChatGPTs }
 In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
-\section{Architectures 101}
+\section{ChatGPT 101}
 \minisec{Chapter Objectives}
 \begin{arrows}
 	\item Some objective
@@ -808,27 +803,35 @@ Code snippets are of course also essential in a dev book. Here is a code snippet
 
 
 
+\chapter{Gen AI in Model Implementation for Financial Risk, (todo)} \label{chap:genai}
 
-\chapter{Gen AI in Model Implementation for Financial Risk, (todo )}
+2. Add reference to the chapter at the end
 
-In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
-\section{The First Section}
-\minisec{Chapter Objectives}
-\begin{arrows}
-	\item Some objective
-	\item Some other objective
-	\item Another objective
-\end{arrows}
+At the end of the chapter, you can add a reference to it like this:
 
-\minisec{Code Snippets}
+\section*{Conclusion}
+In this chapter, we discussed the implementation of Generative AI models for financial risk prediction. For further details on the methodologies used, please refer to Chapter \ref{chap:genai}.
 
-Code snippets are of course also essential in a dev book. Here is a code snippet:
+3. Using \nameref for a textual reference
 
-\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
-	npm install express
-\end{codeInput}
+Alternatively, if you want to reference the chapter by its name, you can use \nameref:
+
+\section*{Conclusion}
+As we have seen in the chapter titled \nameref{chap:genai}, the integration of Generative AI plays a crucial role in enhancing financial risk prediction models.
 
 
+
+
+
+As discussed by Joshi (2025) \cite{Joshi2025}, the integration of Generative AI with Big Data offers significant improvements in financial risk management.
+
+\section*{References}
+\begin{thebibliography}{9}
+	\bibitem{Joshi2025}
+	Satyadhar Joshi,
+	\textit{The Synergy of Generative AI and Big Data for Financial Risk: Review of Recent Developments},
+	International Journal For Multidisciplinary Research, 2025, Volume 7, Issue 1, pp. 1-10.
+\end{thebibliography}
 
 
 
