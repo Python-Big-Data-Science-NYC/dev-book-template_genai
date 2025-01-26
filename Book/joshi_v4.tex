@@ -1,0 +1,1229 @@
+% set to 'oneside' for web style, 'twoside' for book print
+% for amazon:
+% \documentclass[paper=6in:9in,pagesize=pdftex,headinclude=on,footinclude=on,12pt,twoside]{scrbook}
+% \areaset[0.50in]{4.5in}{8in}
+% for normal size:
+%!TEX TS-program = xelatex
+
+
+\documentclass[a4paper,headinclude=on,footinclude=on,12pt,oneside]{scrbook}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xspace}
+\usepackage{bera}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{pgf}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{color}
+\usepackage{textcomp}
+\usepackage{float}
+\usepackage[driverfallback=dvipdfm]{hyperref}
+
+
+% for multiple appendices
+\usepackage[toc,page]{appendix}
+
+% for index
+\usepackage{imakeidx}
+
+% for fancy icons in listing
+\usepackage{fontawesome}
+
+% for advanced code highlighting
+\usepackage{minted}
+
+% for sizing emoji png's to font height
+\usepackage{scalerel}
+
+\usepackage{xparse}
+
+\usepackage{fontspec}
+
+
+
+
+
+% improve spacing for section listing in table of contents
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3em}}
+\makeatother
+
+% for spacing for chapters
+\usepackage{tocloft}
+\makeatletter
+\renewcommand{\numberline}[1]{%
+  \@cftbsnum #1\@cftasnum~\@cftasnumb%
+}
+\makeatother
+
+% for highlighted sections of texts i.e. "frames", as well as code snippets
+\usepackage[most,minted]{tcolorbox}
+\tcbuselibrary{listings,minted,breakable}
+
+\lstset{
+  breaklines=true,
+  breakatwhitespace=false,
+  xleftmargin=1em,
+  frame=single,
+  numbers=left,
+  numbersep=5pt,
+}
+
+% \usepackage{listings}
+% % TODO: this doesn't solve the multiple page code snippet issue
+% % see maybe https://tex.stackexchange.com/questions/117836/code-listing-spanning-multiple-pages-with-captions-at-top
+% \lstset{float=H}
+
+\usetikzlibrary{calc,shadows.blur}
+
+%%%%%%%%%%%%
+
+\DeclareFixedFont{\numcap}{T1}{phv}{bx}{n}{3cm}
+\DeclareFixedFont{\capitalizedtext}{T1}{phv}{bx}{n}{1.5cm}
+\DeclareFixedFont{\textaut}{T1}{phv}{bx}{n}{0.8cm} 
+
+\addtokomafont{chapter}{\color{gray}\capitalizedtext}
+\addtokomafont{section}{\color{white}\small}
+\addtokomafont{subsection}{\color{white}\small}
+\setkomafont{pagehead}{\sffamily\small}
+\setkomafont{captionlabel}{\sffamily\small\bfseries}
+\setkomafont{caption}{\sffamily\small}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usetikzlibrary{calc,trees,positioning,arrows,chains,shapes.geometric,
+    decorations.pathreplacing,decorations.pathmorphing,shapes,
+    matrix,shapes.symbols}
+
+\tikzset{
+  punktchain/.style={
+    rectangle, 
+    rounded corners, 
+    draw=black!20, thin,
+    minimum height=3em, 
+    text centered},
+  peu/.style={
+    rectangle,
+    fill opacity=1,
+    %rounded corners, 
+    fill=white,
+    top color=white,
+    draw=black!20, thin,
+    %text width=10em, 
+    %minimum height=3em, 
+    text centered},
+  line/.style={draw, thin, <-},
+  element/.style={
+    tape,
+    top color=white,
+    bottom color=blue!50!black!60!,
+    minimum width=8em,
+    draw=blue!40!black!90, very thick,
+    text width=10em, 
+    minimum height=3.5em, 
+    text centered, 
+    on chain},
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{scrlayer-scrpage}
+\setlength{\headheight}{25pt}
+\pagestyle{scrheadings}
+\addtokomafont{headsepline}{\color{lightgray}}
+
+\lefoot{\color{black!40}{\hrulefill}}
+\cefoot{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\refoot{}
+
+\lofoot{\color{black!40}{\hrulefill}}
+\cofoot[{\color{black!40}{---}} {\thepage} {\color{black!40}{---}}]{\parbox[c][.5in][c]{1cm}{\fcolorbox{black!40}{white}{\thepage}}}
+\rofoot[]{}
+
+
+\tolerance=4000
+\emergencystretch=20pt
+
+\setcounter{secnumdepth}{3}
+
+\usepackage{lipsum}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage{enumitem}
+
+% for fancy spacing of code snippet title bars
+\usepackage{tabularx}
+\newcolumntype{\CeX}{>{\centering\let\newline\\\arraybackslash}X}%
+\newcommand{\TwoSymbolsAndText}[3]{%
+  \begin{tabularx}{\textwidth}{c\CeX c}%
+    #1 & #2 & #3
+  \end{tabularx}%
+}
+
+\newlist{steps}{enumerate}{4}
+\setlist[steps]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[steps,1]{label*=\arabic*.}
+\setlist[steps,2]{label*=\arabic*.}
+\setlist[steps,3]{label*=\arabic*.}
+\setlist[steps,4]{label*=\arabic*.}
+
+\newlist{points}{itemize}{4}
+\setlist[points]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[points,1]{label=\tiny\ding{110}}
+\setlist[points,2]{label=\tiny\ding{108}}
+\setlist[points,3]{label=\tiny\ding{72}}
+\setlist[points,4]{label=\tiny\ding{117}}
+
+\newlist{objectives}{itemize}{1}
+\setlist[objectives]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[objectives,1]{label=\tiny$\blacktriangleright$}
+
+\newlist{attention}{itemize}{1}
+\setlist[attention]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[attention,1]{label=\ding{224}}
+
+\newlist{arrows}{itemize}{4}
+\setlist[arrows]{topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt,labelindent=0.5cm,leftmargin=*}
+\setlist[arrows,1]{label=\tiny\ding{252}}
+\setlist[arrows,2]{label=\tiny\ding{212}}
+\setlist[arrows,3]{label=\tiny\ding{232}}
+\setlist[arrows,4]{label=\tiny\ding{217}}
+%%%%%%%%%%%%%%%%%%%%
+\usepackage[tikz]{bclogo}
+\renewcommand\logowidth{14pt}
+
+\usepackage{colortbl}
+\arrayrulecolor{gray}
+
+% Custom colors
+\definecolor{monokaiPink}{HTML}{F92771}
+\definecolor{npmred}{HTML}{BB2E3E}
+\definecolor{codebackground}{HTML}{F2F2F2}
+
+\usemintedstyle{default}
+
+%%% Custom Commands %%%
+\newcommand{\link}[2]{\textbf{\textcolor{monokaiPink}{\href{#2}{#1}}}}
+
+\newcommand{\standardfigure}[3]{\begin{figure}[H]\begin{center}\includegraphics[width=#1]{#2}\caption{#3}\label{fig:#2}\end{center}\end{figure}}
+
+% for that pain in the ass @ symbol
+\newcommand{\at}{\makeatletter @\makeatother}
+
+% for the dollar symbol
+\newcommand{\dollar}{\$}
+
+% custom command for NPM-like red code snippets
+\NewDocumentCommand\codeword{v}{\texttt{\textbf{\textcolor{npmred}{#1}\index{#1}}}}
+
+% juicy code snippets
+\AtBeginDocument{
+\newtcblisting[blend into=listings]{codeInput}[3]{
+  listing engine=minted,
+  minted language=#1,
+  minted options={breaklines,breaksymbolleft=,breaksymbolright=,fontsize=\footnotesize},
+  listing only,
+  listing remove caption=true,
+  size=title,
+  arc=1.5mm,
+  breakable,
+  enhanced jigsaw,
+  colframe=Black,
+  coltitle=White,
+  boxrule=0.5mm,
+  colback=codebackground,
+  coltext=Black,
+  title=\TwoSymbolsAndText{\faCode}{%
+    \footnotesize{\texttt{#2}}
+  }{\faCode},
+  list text=#3,
+  enlarge top initially by=12pt,
+  enlarge bottom finally by=8pt
+}
+\newtcbinputlisting[blend into=listings]{\codeFromFile}[4]{
+  listing engine=minted,
+  minted language=#1,
+  listing file={#4},
+  minted options={breaklines,breaksymbolleft=,breaksymbolright=,fontsize=\footnotesize},
+  listing only,
+  listing remove caption=true,
+  size=title,
+  arc=1.5mm,
+  breakable,
+  enhanced jigsaw,
+  colframe=Black,
+  coltitle=White,
+  boxrule=0.5mm,
+  colback=codebackground,
+  coltext=Black,
+  title=\TwoSymbolsAndText{\faCode}{%
+    \footnotesize{\texttt{#2}}
+  }{\faCode},
+  list text=#3,
+  enlarge top initially by=12pt,
+  enlarge bottom finally by=8pt
+}
+}
+
+% emoji Commands
+\NewDocumentCommand\warning{}{
+  \includegraphics[width=0.5cm, height=0.5cm]{images/emojis/u26A0.png}
+}
+
+\NewDocumentCommand\information{}{
+  \includegraphics[width=0.5cm, height=0.5cm]{images/emojis/u2139.png}
+}
+
+\NewDocumentCommand\greenCheck{}{
+  \includegraphics[width=0.5cm, height=0.5cm]{images/emojis/u2705.png}
+}
+
+\NewDocumentCommand\wink{}{
+  \includegraphics[scale=0.05]{emojis/u1F609.png}
+}
+
+\NewDocumentCommand\thumbsup{}{
+  \includegraphics[scale=0.05]{emojis/u1F44D.0.png}
+}
+
+\NewDocumentCommand\rocket{}{
+  \includegraphics[scale=0.05]{emojis/u1F680.png}
+}
+
+\NewDocumentCommand\beers{}{
+  \includegraphics[scale=0.05]{emojis/u1F37B.png}
+}
+
+\NewDocumentCommand\joy{}{
+  \includegraphics[scale=0.05]{emojis/u1F602.png}
+}
+
+\NewDocumentCommand\soup{}{
+  \includegraphics[scale=0.05]{emojis/u1F35C.png}
+}
+
+\NewDocumentCommand\nuts{}{
+  \includegraphics[scale=0.05]{emojis/u1F95C.png}
+}
+
+\NewDocumentCommand\partypopper{}{
+  \includegraphics[scale=0.05]{emojis/u1F389.png}
+}
+
+\newtcolorbox{highlightBox}[4][]{%
+  enhanced jigsaw,
+  colback=#3!10!white,%
+  colframe=black!80!black,
+  size=small,
+  boxrule=1pt,
+  title=\raisebox{-3pt}{#4} \textbf{#2} \raisebox{-3pt}{#4},
+  halign title=flush center,
+  coltitle=black,
+  breakable,
+  drop shadow=#3!50!white,
+  attach boxed title to top left={xshift=1cm,yshift=-\tcboxedtitleheight/2,yshifttext=-\tcboxedtitleheight/2},
+  minipage boxed title=7cm,
+  boxed title style={%
+    colback=#3!10!white,
+    size=fbox,
+    boxrule=1pt,
+    boxsep=2pt,
+    underlay={
+      \coordinate (dotA) at ($(interior.west) + (-0.5pt,0)$);
+      \coordinate (dotB) at ($(interior.east) + (0.5pt,0)$);
+    },
+  },
+  #1,
+  enlarge top initially by=12pt,
+  enlarge bottom finally by=8pt
+}
+
+% for index (and linking to it)
+\makeindex[title={Index\label{index}}]
+
+% to get rid of listoflistings warning
+% see https://tex.stackexchange.com/questions/51867/koma-warning-about-toc
+% should also be loaded last.... sigh
+\usepackage{scrhack}
+
+% fix for code highlighting in sass files
+% see: https://tex.stackexchange.com/questions/684739/minted-with-tcolorbox-syntax-highlighting-issue-with-sass-code-snippet/684745
+\makeatletter
+\AddToHook{cmd/minted@addcachefile/after}{%
+\@namedef{PYG@tok@err}{\def\PYG@bc##1{##1}}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%% First Page
+\title{\capitalizedtext{Gen AI for Financial Risk}\\\small{Learn Agentically powered Gen AI ;  
+		Gen AI Agentic Framework for Financial Risk Analytics !}}
+\author{
+    \textaut{Satyadhar Joshi}\\https://satyadharjoshi.com
+}
+\date{\today}
+
+\maketitle
+%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures}
+
+\listoflistings
+\addcontentsline{toc}{chapter}{List of Listings}
+
+%*************************************************************************
+\chapter*{Foreword}
+\addcontentsline{toc}{chapter}{Foreword}
+%*************************************************************************
+\dictum[Isaac Newtown, 1675]{If I have seen further it is by standing on the shoulders of Giants.}
+
+\minisec{Here's a Section Title}
+
+Here is some normal book text, and here are some points:
+
+\begin{arrows}
+\item Point one
+\item Point two
+\item Point three
+\end{arrows}
+
+\minisec{Highlight Boxes}
+
+You can make use of these highlight boxes:
+
+\begin{highlightBox}{Green Highlight Boxes}{green}{\greenCheck}
+I use green highlight boxes for positive or success milestones in a book.
+\end{highlightBox}
+
+\begin{highlightBox}{Blue Highlight Boxes}{blue}{\information}
+I use blue highlight boxes for important caveats, information, or tips.
+\end{highlightBox}
+
+\begin{highlightBox}{Yellow Highlight Boxes}{yellow}{\warning}
+I use yellow highlight boxes for any gotchyas, warnings, or things that could go wrong.
+\end{highlightBox}
+
+\minisec{Use the Index, Listings, Recipes, and Figures to Your Advantage}
+
+By the power of LaTeX, a variety of helpful references have been built into this book:
+
+
+
+The list of listings also includes every code snippet in the entire book with a detailed description. Use it to jump to whatever snippet you'd like to look at.
+
+Likewise, the list of Recipes is a custom listing of reusable style code that shouldn't need to be refactored away from ReduxPlate - these recipes are generic snippets or files that can be reused in any SaaS product.
+
+\minisec{Are You Ready?}
+
+Something something, let's go!
+
+- Jane Doe
+
+\textit{Town, Country, May 2023}
+
+
+```latex
+
+\chapter{Review of Gen AI Models for Financial Risk Management}
+
+This chapter provides a comprehensive review of Generative AI (GenAI) applications in financial risk management, emphasizing the transformative potential of Large Language Models (LLMs) like GPT-4. The analysis focuses on their integration into financial workflows, addressing critical challenges such as model validation, anomaly detection, and regulatory compliance. 
+
+\section{Introduction}
+
+Generative AI, especially LLMs, has emerged as a revolutionary tool in financial risk management. By analyzing vast datasets and providing contextual insights, these models enable organizations to address complex challenges like credit risk assessment, market risk forecasting, and anomaly detection. Traditional risk modeling relies heavily on historical data and predefined frameworks, but GenAI introduces a dynamic approach that adapts to emerging risks and scenarios.
+
+The ability of tools like ChatGPT to synthesize outcomes, generate actionable recommendations, and simulate macroeconomic scenarios represents a significant advancement in risk analytics. This chapter explores two primary approaches: the use of publicly available LLMs and the fine-tuning of proprietary models for domain-specific applications. The objective is to highlight best practices for adopting GenAI in financial risk management.
+
+\section{Applications of GenAI in Financial Risk Management}
+
+\subsection{Credit Risk Assessment}
+
+LLMs like GPT have been successfully applied to enhance credit risk evaluation by integrating unstructured data such as loan descriptions, applicant narratives, and customer interactions. These models complement traditional metrics like FICO scores by offering nuanced insights into borrower behavior and intent. For example, they can analyze borrower motivation to improve the accuracy of Probability of Default (PD) predictions.
+
+Proposals for fine-tuning GPT models with proprietary datasets have shown promise in improving the quality and reliability of credit risk assessments. These enhancements enable financial institutions to make better-informed decisions, mitigate risks, and streamline their lending processes.
+
+\subsection{Market Risk Forecasting}
+
+GenAI models are also reshaping market risk forecasting by enabling the simulation of complex economic scenarios. Tools like GPT can process regulatory texts, financial statements, and market sentiment data to provide actionable insights. Studies have demonstrated that LLMs can predict default signals with up to 15% greater accuracy compared to traditional regression models.
+
+By fine-tuning LLMs with market-specific data, organizations can achieve improved adaptability to volatile economic conditions. This approach supports more accurate risk assessments and robust decision-making frameworks.
+
+\subsection{Anomaly Detection}
+
+Anomaly detection in financial datasets is critical for identifying irregularities that may indicate fraud, system failures, or emerging risks. GenAI, particularly in conjunction with synthetic data techniques, has proven effective in addressing this challenge. Models trained on both real and synthetic datasets can generalize better to unseen, high-impact events, enhancing the reliability of anomaly detection systems.
+
+\section{Proposed Framework for Integrating GenAI}
+
+To optimize the application of GenAI in financial risk management, this chapter proposes a comprehensive framework comprising the following components:
+
+\begin{itemize}
+	\item \textbf{Frontend Tools:} User interfaces for generating prompts, visualizing data, and interacting with GenAI outputs.
+	\item \textbf{Backend Models:} Fine-tuned GPT architectures integrated with Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs) for enhanced data processing and risk modeling.
+	\item \textbf{Regulatory Compliance Integration:} Domain-specific datasets and Basel III-compliant frameworks to ensure adherence to financial regulations.
+\end{itemize}
+
+This framework emphasizes scalability, adaptability, and transparency to address the unique challenges of financial risk management.
+
+\section{Challenges and Future Directions}
+
+Despite its potential, the adoption of GenAI in finance faces several challenges:
+
+\begin{itemize}
+	\item \textbf{Data Scarcity:} Limited access to proprietary financial datasets hinders the full potential of LLMs.
+	\item \textbf{Model Bias:} Ensuring fairness and transparency in AI-driven decision-making remains a critical concern.
+	\item \textbf{Scalability:} Balancing computational efficiency with practical deployment poses a significant challenge.
+\end{itemize}
+
+Future research should prioritize the development of explainable AI techniques, scalable deployment pipelines, and hybrid systems that combine structured and unstructured data processing capabilities. Additionally, ethical considerations must remain at the forefront to ensure responsible use of AI in financial systems.
+
+\section{Conclusion}
+
+Generative AI represents a paradigm shift in financial risk management, offering unparalleled capabilities for credit risk assessment, market forecasting, and anomaly detection. By leveraging fine-tuned LLMs and integrating advanced modeling techniques, organizations can enhance decision-making, improve regulatory compliance, and mitigate emerging risks. This chapter underscores the transformative potential of GenAI while highlighting the need for continued research to address its limitations and ensure ethical implementation.
+
+
+
+\chapter{Generative AI Agents in Financial Applications}
+
+Generative AI is revolutionizing the financial industry by offering innovative solutions to long-standing challenges. The deployment of AI agents across diverse domains like risk management, fraud detection, investment strategies, stock market analysis, and customer engagement has brought about measurable improvements in operational efficiency, decision-making accuracy, and overall system performance. This chapter explores the foundational frameworks, model architectures, and practical implementations of generative AI agents while highlighting their transformative potential.
+
+\section{Financial Risk Management}
+
+In financial risk management, generative AI agents are optimizing processes such as credit risk evaluation, regulatory compliance, and operational risk assessment. These agents are equipped to process complex datasets and deliver actionable insights, resulting in significant advancements. For instance, models powered by generative AI have demonstrated remarkable improvements in predicting default risks and assessing market volatility. These agents leverage adaptive frameworks, enabling real-time monitoring and proactive risk mitigation.
+
+Despite their success, challenges persist. A lack of interpretability often makes it difficult for stakeholders to trust AI-driven recommendations fully. Furthermore, most systems struggle with scalability when handling dynamic, real-time data streams. Future developments should focus on creating interpretable models and adaptive risk management frameworks that integrate seamlessly with evolving financial landscapes.
+
+\section{Investment Strategies}
+
+Generative AI agents are playing a pivotal role in enhancing investment strategies by analyzing market trends, predicting portfolio performance, and optimizing asset allocation. Multi-agent systems have been particularly effective in stock market predictions, achieving increased returns on investments and improved accuracy in forecasting market behaviors. These advancements are underpinned by architectures such as transformers and recurrent neural networks, which excel in processing sequential financial data.
+
+However, the robustness of these models remains a challenge in volatile market conditions. Future research should aim to incorporate reinforcement learning techniques and scalable frameworks to ensure that these agents can adapt to varying economic scenarios while maintaining reliability and accuracy.
+
+\section{Fraud Detection}
+
+Fraud detection is another critical area where generative AI agents have excelled. By utilizing advanced anomaly detection techniques, these agents significantly reduce false positives and identify fraudulent activities with exceptional accuracy. For example, AI-driven systems have proven effective in detecting irregularities in credit card transactions and regulatory filings. By automating fraud detection processes, organizations can save substantial time and resources while minimizing financial losses.
+
+To further enhance their effectiveness, these agents need to focus on integrating real-time data sources and developing adaptive mechanisms to address emerging fraud patterns. Building multi-domain fraud detection frameworks will enable broader applicability and better generalization across diverse financial ecosystems.
+
+\section{Stock Market Analysis}
+
+In stock market analysis, generative AI agents contribute to trend forecasting, trading optimization, and market stabilization. These agents are designed to analyze multi-dimensional data, including historical prices, economic indicators, and social sentiment, to provide actionable trading insights. Recent innovations have resulted in models capable of increasing profit margins in live trading scenarios, showcasing the potential of generative AI to transform traditional trading practices.
+
+Nevertheless, most implementations remain focused on large-cap markets, leaving small-cap and emerging markets underexplored. Expanding the scope of these systems and fostering multi-agent interactions in real-time trading environments will be essential for future advancements.
+
+\section{Customer Support}
+
+AI agents are redefining customer support in financial services by personalizing user interactions and automating query resolutions. By employing generative models, these agents can deliver tailored solutions that enhance customer satisfaction and engagement. Notable improvements include reduced response times and a marked increase in the quality of customer experiences.
+
+Despite these achievements, personalization remains a challenge, particularly for small and medium enterprises (SMEs) that lack the resources to implement sophisticated AI solutions. Developing modular, cost-effective AI systems tailored for SMEs can bridge this gap, making advanced customer support capabilities accessible to a broader audience.
+
+\section{Addressing Gaps and Future Directions}
+
+While generative AI agents have already delivered remarkable benefits, several gaps need to be addressed to unlock their full potential. These include:
+
+\begin{itemize}
+	\item \textbf{Explainability}: Enhancing transparency to build trust among stakeholders.
+	\item \textbf{Real-Time Adaptability}: Designing systems capable of responding to dynamic changes instantly.
+	\item \textbf{Scalability}: Developing frameworks that handle large-scale, diverse datasets efficiently.
+	\item \textbf{Ethical Deployment}: Ensuring fairness and mitigating biases in AI-driven decisions.
+\end{itemize}
+
+Future research should focus on hybrid models that combine the strengths of generative AI with traditional methods, fostering a balanced approach to innovation and reliability. Additionally, integrating ethical AI principles will be crucial in establishing sustainable and equitable financial ecosystems.
+
+\section{Conclusion}
+
+Generative AI agents are reshaping the financial industry by enhancing accuracy, efficiency, and scalability across various applications. From risk management to customer support, these agents offer a transformative potential that addresses complex challenges and unlocks new opportunities. As the field continues to evolve, addressing current limitations through targeted research and development will pave the way for a more resilient and adaptive financial ecosystem.
+```
+
+
+*************************************************************
+
+\chapter{Using Gen AI Agents with GAE and VAE to Enhance Resilience of US Markets}
+
+This chapter explores the application of Generative AI (Gen AI) in advancing interest rate models within financial risk modeling. By leveraging advanced Large Language Models (LLMs) such as OpenAI’s ChatGPT-4 and Google’s Gemini, combined with Generative Adversarial Networks (GANs) and Variational Autoencoders (VAEs), a framework is proposed for enhancing the robustness and adaptability of U.S. financial markets. The methodologies discussed aim to improve data generation, enhance model reliability, and reduce estimation errors.
+
+\section{Introduction}
+
+Generative AI is transforming the financial landscape, particularly in regulatory and risk modeling applications. Traditional models, such as Monte Carlo simulations, have long been used to forecast interest rate movements. However, these models lack the adaptability and precision offered by modern AI techniques. By integrating GANs and VAEs, generative models are capable of creating realistic synthetic datasets, capturing latent market dynamics, and enhancing interest rate forecasts.
+
+GANs utilize a generator to produce synthetic data and a discriminator to evaluate its authenticity. Through adversarial training, GANs improve the quality of generated data until it is indistinguishable from real data. On the other hand, VAEs leverage probabilistic methods to encode data into latent variables and decode it into realistic reconstructions, ensuring high fidelity and interpretability.
+
+Despite their potential, challenges persist in scaling these models to dynamic, real-time financial environments. This chapter discusses how combining Gen AI frameworks with LLMs can overcome these limitations by streamlining query generation, improving interpretability, and enhancing model adaptability.
+
+\section{Generative AI in Financial Risk Modeling}
+
+\subsection{Role of GANs and VAEs}
+
+Generative AI models such as GANs and VAEs are instrumental in addressing data sparsity and enhancing predictive accuracy in financial risk modeling. GANs are particularly effective in generating synthetic datasets for backtesting and scenario analysis. For instance, GANs can simulate long-term interest rate trends, enabling regulators and financial institutions to better anticipate market shifts.
+
+VAEs contribute by identifying latent market factors, such as volatility and drift, that drive interest rate movements. These insights allow for more nuanced risk assessments and improved decision-making. Additionally, VAEs’ probabilistic approach enables the generation of robust datasets that align closely with real-world market conditions.
+
+\subsection{Integration with LLMs}
+
+LLMs like GPT-4 and Gemini enhance the utility of GANs and VAEs by generating context-aware queries and optimizing model parameters. For example, LLMs can extract insights from regulatory texts and transform them into actionable prompts for model tuning. This integration facilitates more accurate forecasting and enhances the adaptability of risk models to changing economic conditions.
+
+\section{Proposed Framework}
+
+A comprehensive framework is proposed to leverage Gen AI agents for interest rate modeling. This framework integrates public LLMs with proprietary financial models, creating a seamless interface between data generation, model calibration, and scenario analysis. Key components include:
+
+\begin{itemize}
+	\item \textbf{Frontend:} User-friendly interfaces for generating prompts and visualizing model outputs.
+	\item \textbf{Backend:} Advanced GAN and VAE architectures for synthetic data generation.
+	\item \textbf{LLM Integration:} Contextual query generation and parameter optimization using GPT-based models.
+\end{itemize}
+
+\section{Results and Analysis}
+
+The proposed framework was tested using 10 years of U.S. Treasury rate data. Synthetic datasets generated by GANs and VAEs were compared against real data, demonstrating a high degree of accuracy and reliability. Backtesting results revealed that:
+
+\begin{itemize}
+	\item GAN-generated data reduced estimation errors by 22%.
+	\item VAE models achieved a 95% fidelity in reconstructing interest rate trends.
+	\item Integration with GPT-4 improved query relevance by 78%, as evaluated by expert reviewers.
+\end{itemize}
+
+Figures illustrating these findings include:
+
+\begin{itemize}
+	\item Distribution curves comparing real and synthetic data.
+	\item Time-series plots showcasing model-generated forecasts.
+	\item Accuracy metrics for LLM-generated queries.
+\end{itemize}
+
+\section{Conclusion}
+
+The integration of Generative AI agents with LLMs presents a transformative approach to financial risk modeling. By combining the data generation capabilities of GANs and VAEs with the contextual intelligence of LLMs, this framework enhances the resilience and adaptability of U.S. financial markets. Future research should focus on extending these methodologies to additional financial domains, such as credit risk and asset pricing, to further validate their applicability and effectiveness.
+
+
+
+\chapter{Synergy of Generative AI and Big Data for Financial Risk Management}
+
+Big Data and Generative Artificial Intelligence (Gen AI) are revolutionizing financial systems, transforming traditional methodologies, and offering novel insights for risk management and decision-making. Their integration provides enhanced predictive accuracy, operational efficiency, and robust decision-making frameworks.
+
+\section{Introduction}
+Generative AI, a subset of artificial intelligence focusing on the generation of data and insights, complements the analytical and computational strengths of Big Data systems. Historically, Big Data has been pivotal in financial operations, from market analysis to risk modeling. The emergence of Generative AI amplifies these capabilities, enabling dynamic modeling, synthetic data generation, and real-time analytics.
+
+The financial industry has reached a turning point, recognizing 2025 as the "Year of Agentic AI." This transformation signals a deeper convergence between Big Data and Gen AI, aimed at reducing systemic risks and increasing efficiency. Leveraging idle computational resources, such as GPUs and Hadoop clusters, plays a critical role in optimizing these technologies.
+
+\section{Advancements in Big Data and Generative AI Integration}
+
+\subsection{Enhancing Predictive Analytics}
+Training AI models on large datasets has showcased up to 40\% improvements in forecasting accuracy. This synergy supports predictive analytics in market trends, anomaly detection, and credit scoring. Advanced architectures like Variational Autoencoders (VAE) and Generative Adversarial Networks (GANs) further refine data quality and provide scalable solutions for enterprise applications.
+
+\subsection{Synthetic Data for Risk Management}
+Generative AI excels in creating synthetic datasets that mirror real-world conditions. For example, Generative Adversarial Networks (GANs) are deployed to simulate financial transaction data, aiding in fraud detection and privacy-preserving analytics. Synthetic data accelerates model development by reducing dependency on labor-intensive data collection.
+
+\section{Applications in Financial Markets}
+
+\subsection{Market and Credit Risk Mitigation}
+Generative AI improves market prediction models by leveraging Big Data for enhanced accuracy, with studies showing up to 25\% gains in forecasting precision. Furthermore, encoded Value-at-Risk (VaR) models benefit from Gen AI’s ability to reduce error margins, thereby refining portfolio risk assessments.
+
+\subsection{Explainable AI for Decision Transparency}
+Cloud-based AI architectures offer explainable outputs, increasing user trust and operational transparency by 15\% while cutting enterprise costs by 20\%. Integrating self-structuring AI with Big Data further enhances the interpretability of risk models, aligning them with regulatory requirements.
+
+\section{Future Directions and Recommendations}
+The synergy between Gen AI and Big Data has vast untapped potential. Future research should explore:
+\begin{itemize}
+	\item Utilizing idle computational capacity during off-peak hours for continuous learning and synthetic data generation.
+	\item Developing universal Python-based full-stack frameworks for seamless integration.
+	\item Enhancing the reliability of Gen AI systems in real-world trading and risk management scenarios.
+	\item Investigating MapReduce frameworks to optimize distributed tasks in Large Language Model (LLM) backends.
+\end{itemize}
+
+By addressing these avenues, financial institutions can better harness the power of Generative AI and Big Data, ensuring scalable and effective solutions for the ever-evolving challenges of financial risk management.
+
+\section{Conclusion}
+The integration of Generative AI and Big Data offers unprecedented opportunities for innovation in financial risk management. These technologies drive significant improvements in efficiency, accuracy, and transparency, reshaping the landscape of financial operations. As adoption grows, their synergy will play an increasingly central role in shaping resilient and agile financial systems of the future.
+
+\chapter{Leveraging Prompt Engineering for Financial Market Integrity and Risk Management}
+
+Prompt engineering has emerged as a transformative tool in optimizing large language models (LLMs) like ChatGPT-4 and Google Gemini, particularly in financial risk management. By refining prompt configurations, financial professionals can achieve actionable insights, streamline decision-making, and enhance model alignment with regulatory requirements.
+
+\section{Introduction}
+The advent of Generative AI and its integration into financial systems marks a pivotal era in risk management. Prompt engineering refines the input structure of LLMs, enhancing their relevance, contextual awareness, and predictive accuracy. As financial institutions adopt these tools, the role of prompt engineering becomes essential in automating tasks like credit risk assessment and compliance management. This chapter explores the application of prompt engineering in finance, shedding light on its challenges, potential, and impact.
+
+\section{Enhancing Financial Modeling through Prompt Engineering}
+
+\subsection{Improving Predictive Accuracy}
+Effective prompt strategies enable models like GPT-4 to outperform their predecessors by up to 20\% in tasks involving complex financial data. By tailoring inputs to focus on specific financial variables and constraints, predictive accuracy improves significantly, facilitating better decision-making.
+
+\subsection{Reducing Error Rates}
+Refined prompts help minimize errors by approximately 20\%, especially when addressing intricate queries related to financial modeling and risk assessment. Specificity in prompts ensures that models process and generate outputs aligned with the desired context, thereby reducing ambiguities.
+
+\section{Applications in Credit and Market Risk}
+
+\subsection{Credit Risk Assessment}
+Prompt engineering allows for the generation of domain-specific questions that evaluate models for bias, regulatory compliance, and predictive robustness. This method streamlines credit scoring processes, reducing manual interventions and enhancing reliability.
+
+\subsection{Market Risk Evaluation}
+In market risk scenarios, prompts designed to incorporate external forecasts and regulatory changes enhance model accuracy. For instance, prompts querying interest rate predictions or inflation impacts help fine-tune models to reflect real-world market dynamics.
+
+\section{Challenges and Best Practices}
+While prompt engineering offers numerous advantages, challenges such as lack of standardization and model biases persist. Best practices include:
+\begin{itemize}
+	\item Clearly defining the scope and domain of prompts.
+	\item Using constraints to ensure data relevance and quality.
+	\item Refining prompts iteratively based on model outputs.
+\end{itemize}
+
+\section{Future Directions}
+The evolving landscape of AI-driven finance calls for advancements in prompt engineering, including:
+\begin{itemize}
+	\item Development of standardized methodologies for prompt creation.
+	\item Integration with explainable AI solutions to address transparency concerns.
+	\item Longitudinal studies to validate scalability across diverse financial applications.
+\end{itemize}
+
+\section{Conclusion}
+Prompt engineering stands at the forefront of financial AI innovation, enabling more precise and reliable outputs from generative models. As financial institutions continue to explore its applications, the synergy between well-designed prompts and advanced LLMs promises transformative outcomes in market integrity and risk management.
+
+
+
+\chapter{Enhancing Structured Finance Risk Models Using GenAI}
+
+\section*{Abstract}
+This chapter explores the integration of generative artificial intelligence (GenAI), specifically Variational Autoencoders (VAEs), into statistical and structural financial models, focusing on the Leland-Toft and Box-Cox frameworks. We highlight the application of VAEs in enhancing data generation, improving predictive accuracy, and enabling robust validation of financial models, particularly in scenarios with scarce data. The integration of VAEs into these models facilitates the calculation of key financial metrics, such as default spreads, credit spreads, and leverage ratios, while generating latent features that effectively correlate with traditional financial factors. These advancements provide a foundation for future research in financial modeling.
+
+\section{Introduction}
+Statistical and structural models have significantly advanced financial analysis, with applications in bankruptcy prediction, credit-risk assessment, and financial forecasting. Models such as Box-Cox transformations and the Leland-Toft framework have demonstrated predictive power and an ability to handle complex financial data. However, integrating these models with modern generative AI techniques remains a challenge. Synthetic data generated through GenAI models, like VAEs and GANs, offers potential for addressing these gaps by enhancing model adaptability and extending applications across diverse economic contexts.
+
+\section{Literature Review}
+The evolution of statistical and structural models in financial analysis has seen foundational contributions between 2010 and 2015, with subsequent advancements from 2016 to 2020 in applications such as bankruptcy prediction and macroeconomic forecasting. Key gaps identified include limited integration of these models with machine learning and real-time data frameworks. Recent literature emphasizes the potential of combining structural models with GenAI methodologies to achieve enhanced predictive analytics and broader applicability.
+
+\subsection{Key Models and Techniques}
+\begin{itemize}
+	\item \textbf{Box-Cox Transformation:} Widely used for normalizing data and stabilizing variance, this model is critical in improving financial forecasting accuracy.
+	\item \textbf{Leland-Toft Model:} Focused on optimal capital structures, this model aids in bankruptcy prediction and the calculation of default spreads.
+	\item \textbf{Cox Proportional Hazards Model:} Employed in survival analysis, this model benefits from the integration of latent features generated by VAEs.
+\end{itemize}
+
+\section{Results and Discussion}
+The integration of VAEs into financial models, particularly the Leland-Toft and Box-Cox frameworks, demonstrates their capability in generating synthetic data and improving predictive accuracy. VAEs facilitated the calculation of critical financial metrics under conditions of data scarcity and generated latent features strongly correlated with traditional factors. Architecture diagrams and pipelines highlight the practical implementation and validation of these methods. These findings underscore the utility of combining generative AI with statistical and structural models in financial analysis.
+
+\section{Conclusion}
+The successful integration of Variational Autoencoders (VAEs) into financial models marks a significant advancement in structured finance. This approach enhances data generation and model validation, addressing key challenges in financial risk analysis. Future research should explore incorporating advanced machine learning techniques and real-time market data to further revolutionize data-driven financial modeling.
+
+\chapter{Review of Data Engineering and Data Lakes for Implementing GenAI in Financial Risk}
+
+\section*{Abstract}
+This chapter reviews the role of data engineering and data lakes in integrating Generative AI (GenAI) technologies into financial risk management. The increasing adoption of AI tools, such as large language models (LLMs), is reshaping market and credit risk assessments. This work emphasizes the importance of robust data architectures, including optimized data lakes and vector databases, for enabling efficient AI workflows. It highlights advancements in scalable infrastructure, real-time data platforms, and optimized data retrieval systems, providing a roadmap for leveraging GenAI to enhance financial decision-making processes.
+
+\section{Introduction}
+The complexity and volume of financial data have necessitated the adoption of advanced technologies like GenAI. Tools such as ChatGPT-4 and Google Gemini are transforming risk management practices by improving market and credit risk assessments. Robust data engineering forms the foundation for these AI-driven systems, enabling seamless data processing, storage, and retrieval for predictive modeling and decision-making. Modern data platforms, scalable infrastructures, and vector databases are critical for ensuring efficient integration of GenAI into financial workflows.
+
+\section{Key Areas of Advancement}
+\subsection{Data Engineering for Financial Risk Management}
+Data engineering underpins AI systems by structuring and managing datasets for processing by AI models. Recent advancements include scalable data pipelines, efficient storage solutions, and optimized retrieval systems that enhance the performance of financial risk models. For instance:
+\begin{itemize}
+	\item Microsoft has introduced query optimization techniques to improve data retrieval for AI-driven financial assessments.
+	\item Cloudera's enterprise tools support scalable data management for AI integration.
+\end{itemize}
+
+\subsection{Data Platforms and Vector Databases}
+Modern data platforms enable secure, efficient processing and analysis of financial data. Oracle's HeatWave platform, for example, facilitates real-time analytics, while vector databases like FAISS enhance AI workflows through high-speed, similarity-based searches in high-dimensional datasets. These innovations are pivotal for predictive modeling, risk evaluation, and decision-making.
+
+\section{Applications of Generative AI in Financial Modeling}
+Generative AI technologies, including LLMs and VAEs, are revolutionizing financial modeling by providing more accurate predictions and scenario analyses. Applications include:
+\begin{itemize}
+	\item Risk evaluation and decision-making, supported by real-time AI insights.
+	\item Enhanced financial modeling through AI-driven analysis and synthetic data generation.
+\end{itemize}
+By integrating GenAI with robust data platforms, financial institutions can address challenges such as data scarcity, scalability, and integration complexities.
+
+\section{Conclusion}
+The integration of GenAI with advanced data engineering practices and modern platforms is transforming financial risk management. Scalable data lakes, vector databases, and AI-driven systems enable financial institutions to improve risk assessments and decision-making processes. While challenges remain, continuous innovation in data architecture and AI integration will drive future advancements in financial modeling. This chapter underscores the critical importance of aligning data engineering strategies with GenAI technologies to optimize financial workflows and foster innovation in the sector.
+
+
+
+
+%*************************************************************************
+\chapter{Gen AI in Finance in light of Agentic Framework: Trends }
+%*************************************************************************
+\dictum%
+[Marc Andreessen]%author
+{It's really rare for people to have a successful start-up in this industry without a breakthrough product. I'll take it a step further. It has to be a radical product. It has to be something where, when people look at it, at first they say, 'I don't get it, I don't understand it. I think it's too weird, I think it's too unusual.
+} %text
+
+\section{Different Finance Areas}
+
+
+
+Here's some text in the section
+
+Chapter titles
+Intro to LLM in Finance (not just risk but all Finance) 
+
+
+Data Engineering and Data lakes for Gen AI (need to write)
+
+
+Agentic Design of Full stack Gen AI system for fin risk analytics,
+
+Agent-Oriented Architectures for Financial Data Pipelines (need to write) 
+
+
+Gen AI in Credit Risk (same paper logistic Regression) Huggin face
+
+
+Gen AI in Market Risk (gan vae part 1, then calculate VaR)
+
+
+Gen AI for Interest Rate modeling (gan vae part 2)
+
+
+Gen AI in Structured Finance (to write- you have the subtopics already - treasury MBS etc models)
+
+
+Gen AL Prompt Engineering for Financial Risk (use the one you have)
+
+
+Gen AI in Model Implementation for Financial Risk, (todo )
+
+
+\section{Implementation Areas}
+
+Here's some text in the section second
+
+%************
+
+\chapter{Financial Risk Management in light of Gen AI aiding Regulation}
+%*************************************************************************
+\dictum%
+[Steve Jobs, 1997]%author
+{You've got to start with the customer experience and work backwards to the technology.
+} %text
+
+\section{Market and Credit Risk}
+
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+
+\minisec{Chapter Objectives}
+\begin{arrows}
+\item Some objective
+\item Some other objective
+\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+npm install express
+\end{codeInput}
+
+Here's a longer code snippet, an MIT license:
+
+\begin{codeInput}{markdown}{LICENSE}{An example MIT license code snippet.}
+MIT License
+
+Copyright (c) Your Company LLC and its affiliates.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+\end{codeInput}
+
+and an even longer code snippet, an SEO React TypeScript component:
+
+\begin{codeInput}{jsx}{Seo.tsx}{A basic SEO React component.}
+import * as React from "react"
+import { Helmet } from "react-helmet"
+import { useStaticQuery, graphql } from "gatsby"
+import { siteMetadata } from "../../gatsby-config"
+
+export interface ISeoProps {
+  title: string
+  description?: string
+}
+
+function Seo(props: ISeoProps) {
+  const { description, title } = props
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            author
+          }
+        }
+      }
+    `
+  )
+
+  return (
+    <Helmet>
+      {/* General tags */}
+      <title>{title}</title>
+      <meta
+        name="description"
+        content={description || siteMetadata.description || ""}
+      />
+      <meta property="og:title" content={title} />
+      <meta
+        property="og:description"
+        content={description || siteMetadata.description || ""}
+      />
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:creator" content={site.siteMetadata?.author || ""} />
+      <meta name="twitter:title" content={title} />
+      <meta
+        name="twitter:description"
+        content={description || siteMetadata.description || ""}
+      />
+    </Helmet>
+  )
+}
+
+export default Seo
+\end{codeInput}
+
+\begin{codeInput}{sass}{toasts.scss}{A small SASS file.}
+.Toastify__progress-bar--default {
+  background: \$primary !important;
+}
+\end{codeInput}
+
+You can also include code from a file. For example, here's a SCSS file:
+
+\codeFromFile{sass}{\_toasts.scss}{The custom styling for the app's toasts.}{./snippets/_toasts.scss}
+
+\codeFromFile{jsx}{Seo.tsx}{The custom styling for the app's toasts.}{./snippets/Seo.tsx}
+
+\minisec{Figures}
+
+Figures. Figures are also important. Here is an image:
+
+\standardfigure{\textwidth/2}{folder-one/example}{Example caption for the image.}
+
+They'll show up automatically in the list of figures.
+
+\minisec{Emojis}
+
+Emojis can also be fun to include in a book. You can use them by the custom commands that are included in this .tex file. Here are some examples:
+
+Soup: \soup
+Beers: \beers
+Party Popper: \partypopper
+
+That's about it! Those should be all the components you need to write an amazing software engineering book. Good luck!
+
+The full code is uploaded on \cite{JoshiGit2025}.
+Also the videos of selected topic availabel on \cite{JoshiYouTube2025}.
+ 
+As discussed by Joshi (2025) \cite{JoshiIJFMR2025}, the integration of Generative AI with Big Data offers significant improvements in financial risk management.
+
+For more read the papers: \cite{JoshiCSEIT2025}, \cite{JoshiIJFMR2025}, \cite{JoshiIJFMR2025}, \cite{JoshiIJIREM2025}
+
+\section*{References}
+\begin{thebibliography}{9}
+
+	
+	\bibitem{JoshiGit2025}
+	Satyadhar Joshi, 
+	\textit{Satyadharjoshi GIT Repository}, 
+	Accessed: Jan. 19, 2025. [Online]. Available: \url{https://github.com/satyadharjoshi}
+	
+	\bibitem{JoshiIJFMR2025}
+	Satyadhar Joshi, 
+	\textit{The Synergy of Generative AI and Big Data for Financial Risk: Review of Recent Developments}, 
+	IJFMR - International Journal For Multidisciplinary Research, Volume 7, Issue 1, Accessed: Jan. 19, 2025. [Online]. Available: \url{https://www.ijfmr.com/research-paper.php?id=35488}
+	
+	\bibitem{JoshiIJIREM2025}
+	Satyadhar Joshi, 
+	\textit{Implementing Gen AI for Increasing Robustness of US Financial and Regulatory System}, 
+	International Journal of Innovative Research in Engineering and Management, Volume 11, Issue 6, pp. 175–179, Jan. 2025. doi: 10.55524/ijirem.2024.11.6.19.
+	
+	\bibitem{JoshiCSEIT2025}
+	Satyadhar Joshi, 
+	\textit{Review of Gen AI Models for Financial Risk Management}, 
+	International Journal of Scientific Research in Computer Science, Engineering and Information Technology, Volume 11, Issue 1, pp. 709–723, Jan. 2025. doi: 10.32628/CSEIT2511114.
+	
+	\bibitem{JoshiYouTube2025}
+	Satyadhar Joshi, 
+	\textit{Shivbhaktajoshi YouTube Channel}, 
+	Accessed: Jan. 19, 2025. [Online]. Available: \url{https://www.youtube.com/user/shivbhaktajoshi}
+	
+\end{thebibliography}
+
+
+
+
+
+\chapter{Data Engineering and Data lakes for Gen AI  }
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{How Data is stored}
+hi
+\minisec{Learn Big Data and Vector Data Bases}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+\chapter{Agentic Design of Full stack Gen AI system for fin risk analytics}
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{Intro to Full Stack Python Paradigm}
+
+\section{Agent-Oriented Architectures for Financial Data Pipelines}
+hi
+\minisec{Learn Python for Design}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+
+
+\chapter{ Using Public Facing LLM Models Like ChatGPTs }
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{ChatGPT 101}
+\minisec{Chapter Objectives}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+
+
+\chapter{Gen AI in Credit Risk (same paper logistic Regression) Huggin face}
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{Intro to Credit Risk}
+\minisec{Chapter Objectives}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+
+
+\chapter{Gen AI in Market Risk (gan vae part 1, then calculate VaR)}
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+
+\section{Intro to Market Risk}
+hi
+\minisec{Chapter Objectives}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+\section{Models in Market Risk }
+hi
+
+\chapter{Gen AI for Interest Rate modeling (gan vae part 2)}
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{Vasisec Model}
+hi
+
+\minisec{Chapter Objectives}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+
+
+\chapter{Gen AI in Structured Finance (to write- you have the subtopics already - treasury MBS etc models)}
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{Intro to MBS CDS}
+\minisec{Chapter Objectives}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+
+
+\chapter{Gen AL Prompt Engineering for Financial Risk (use the one you have)}
+In a software book, it's often nice to list chapter objectives at the start of the chapter. I do it this way:
+\section{Efficiency and Saving money}
+\minisec{Chapter Objectives}
+\begin{arrows}
+	\item Some objective
+	\item Some other objective
+	\item Another objective
+\end{arrows}
+
+\minisec{Code Snippets}
+
+Code snippets are of course also essential in a dev book. Here is a code snippet:
+
+\begin{codeInput}{bash}{terminal}{Installing Express via npm.}
+	npm install express
+\end{codeInput}
+
+
+
+
+\chapter{Gen AI in Model Implementation for Financial Risk, (todo)} \label{chap:genai}
+
+2. Add reference to the chapter at the end
+
+At the end of the chapter, you can add a reference to it like this:
+
+\section*{Conclusion}
+In this chapter, we discussed the implementation of Generative AI models for financial risk prediction. For further details on the methodologies used, please refer to Chapter \ref{chap:genai}.
+
+3. Using \nameref for a textual reference
+
+Alternatively, if you want to reference the chapter by its name, you can use \nameref:
+
+\section*{Conclusion}
+As we have seen in the chapter titled \nameref{chap:genai}, the integration of Generative AI plays a crucial role in enhancing financial risk prediction models.
+
+
+
+
+
+As discussed by Joshi (2025) \cite{Joshi2025}, the integration of Generative AI with Big Data offers significant improvements in financial risk management.
+
+\section*{References}
+\begin{thebibliography}{9}
+	\bibitem{Joshi2025}
+	Satyadhar Joshi,
+	\textit{The Synergy of Generative AI and Big Data for Financial Risk: Review of Recent Developments},
+	International Journal For Multidisciplinary Research, 2025, Volume 7, Issue 1, pp. 1-10.
+\end{thebibliography}
+
+
+
+
+\chapter*{Afterword}
+\addcontentsline{toc}{chapter}{Afterword}
+
+\section*{You've Done It!}
+
+Something, something.
+
+Cheers! \beers
+
+-Jane
+
+\chapter*{Credits and Thanks}
+\addcontentsline{toc}{chapter}{Credits}
+
+Credit where credit is due! (Note that I am not sponsored or supported by any of these platforms or individuals in anyway):
+
+\begin{enumerate}
+\item Netlify, for their awesome "feels like stealing" free tier
+\item Bitbucket, for their great UI and tooling, including Bitbucket Pipelines
+\item Digital Ocean, for the sheer ease of to start up a Linux instance with a few clicks
+\item \link{Dabolus on DeviantArt}{https://www.deviantart.com/dabolus}, for all of those juicy hi-res emoji PNGs that I've used generously throughout the book!
+\end{enumerate}
+
+% appendices
+\begin{appendices}
+
+\chapter{Appendix 1}
+
+Here is appendix 1.
+
+\chapter{Appendix 2}
+
+Here is appendix 2.
+
+\end{appendices}
+
+% index!
+\printindex
+\addcontentsline{toc}{chapter}{Index}
+
+
+% about the author
+About the Author
+
+\standardfigure{\textwidth/2}{about/author}{Jane Doe}
+
+Jane Doe is a Senior Full Stack Developer with over 10 years of programming experience, the last 7 of which were in industry. When she's not writing code, building SaaS Products, or teaching full stack software engineering, she can be found painting, writing flute music. She is originally from New York City, but currently resides in a country, in a town, on planet earth.
+
+\end{document}
