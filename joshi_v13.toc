@@ -1,0 +1,78 @@
+\contentsline {chapter}{List of Figures}{5}{Doc-Start}%
+\contentsline {chapter}{List of Listings}{6}{chapter*.1}%
+\contentsline {chapter}{Foreword}{7}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Review of Gen AI Models for Financial Risk Management}{8}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Implementing Gen AI for Increasing Robustness of US Financial and Regulatory System}{12}{chapter.2}%
+\contentsline {chapter}{\numberline {3}Generative AI Agents in Financial Applications}{16}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Using Gen AI Agents with GAE and VAE to Enhance Resilience of US Markets}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Introduction}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Generative AI in Financial Risk Modeling}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Role of GANs and VAEs}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Integration with LLMs}{22}{subsection.4.2.2}%
+\contentsline {section}{\numberline {4.3}Proposed Framework}{22}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Results and Analysis}{23}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Conclusion}{23}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Advancing Financial Risk Modeling: Vasicek Framework Enhanced by Agentic Generative AI}{24}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Introduction}{24}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Literature Review}{25}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Vasicek Model Applications}{25}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Monte Carlo Simulations}{25}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Negative Interest Rates and Risk}{25}{subsection.5.2.3}%
+\contentsline {subsection}{\numberline {5.2.4}Deep Learning for Financial Time Series}{26}{subsection.5.2.4}%
+\contentsline {section}{\numberline {5.3}Building on Past Work}{26}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Generative AI in Financial Risk Management}{26}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Leveraging Public Data Through LLMs}{26}{subsection.5.3.2}%
+\contentsline {section}{\numberline {5.4}Proposed Agentic Gen AI Architecture}{26}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Generating Synthetic Interest Rate Data}{27}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Integrating Generative Models with Traditional Frameworks}{27}{subsection.5.4.2}%
+\contentsline {subsection}{\numberline {5.4.3}Comparative Analysis of Generative Models}{27}{subsection.5.4.3}%
+\contentsline {subsection}{\numberline {5.4.4}Human Oversight and Feedback}{27}{subsection.5.4.4}%
+\contentsline {section}{\numberline {5.5}Results and Discussion}{27}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Conclusion}{28}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Synergy of Generative AI and Big Data for Financial Risk Management}{29}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Introduction}{29}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Advancements in Big Data and Generative AI Integration}{30}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Enhancing Predictive Analytics}{30}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Synthetic Data for Risk Management}{30}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.3}Applications in Financial Markets}{30}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Market and Credit Risk Mitigation}{30}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Explainable AI for Decision Transparency}{30}{subsection.6.3.2}%
+\contentsline {section}{\numberline {6.4}Future Directions and Recommendations}{30}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Conclusion}{31}{section.6.5}%
+\contentsline {chapter}{\numberline {7}Leveraging Prompt Engineering for Financial Market Integrity and Risk Management}{32}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Introduction}{32}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Enhancing Financial Modeling through Prompt Engineering}{33}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Improving Predictive Accuracy}{33}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Reducing Error Rates}{33}{subsection.7.2.2}%
+\contentsline {section}{\numberline {7.3}Applications in Credit and Market Risk}{33}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Credit Risk Assessment}{33}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}Market Risk Evaluation}{33}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Challenges and Best Practices}{33}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Future Directions}{34}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Conclusion}{34}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Enhancing Structured Finance Risk Models Using GenAI}{35}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Introduction}{35}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Integration of GenAI with Financial Models}{36}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Enhancing Predictive Analytics}{36}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Synthetic Data for Risk Assessment}{36}{subsection.8.2.2}%
+\contentsline {section}{\numberline {8.3}Applications in Financial Risk Modeling}{36}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Leland-Toft Model with VAEs}{36}{subsection.8.3.1}%
+\contentsline {subsection}{\numberline {8.3.2}Box-Cox Transformation with VAEs}{36}{subsection.8.3.2}%
+\contentsline {section}{\numberline {8.4}Future Research Directions}{37}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Conclusion}{37}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Introduction}{38}{section.8.6}%
+\contentsline {section}{\numberline {8.7}Literature Review}{38}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Key Models and Techniques}{38}{subsection.8.7.1}%
+\contentsline {section}{\numberline {8.8}Results and Discussion}{38}{section.8.8}%
+\contentsline {section}{\numberline {8.9}Conclusion}{39}{section.8.9}%
+\contentsline {chapter}{\numberline {9}Review of Data Engineering and Data Lakes for Implementing GenAI in Financial Risk}{40}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Introduction}{40}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Key Areas of Advancement}{41}{section.9.2}%
+\contentsline {subsection}{\numberline {9.2.1}Data Engineering for Financial Risk Management}{41}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Data Platforms and Vector Databases}{41}{subsection.9.2.2}%
+\contentsline {section}{\numberline {9.3}Applications of Generative AI in Financial Modeling}{41}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Conclusion}{42}{section.9.4}%
+\contentsline {chapter}{Afterword}{46}{chapter*.8}%
+\contentsline {chapter}{Credits}{48}{chapter*.13}%
+\contentsline {chapter}{Appendices}{49}{section*.14}%
+\contentsline {chapter}{Index}{51}{chapter*.15}%
