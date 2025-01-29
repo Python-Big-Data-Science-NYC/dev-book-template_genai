@@ -617,6 +617,47 @@ In addition to academic papers, practical resources play a key role in understan
 	
 \end{thebibliography}
 
+
+
+
+\chapter{Implementing Gen AI for Increasing Robustness of US Financial and Regulatory System}
+
+The increasing evolution of Generative Artificial Intelligence (GenAI) presents a viable pathway for enhancing the robustness of the US financial and regulatory system. This chapter discusses the integration of advanced GenAI models, such as OpenAI’s ChatGPT-4o and Google Gemini 2.0, in financial risk modeling to strengthen regulatory frameworks.
+
+\section{Introduction}
+Recent advancements in GenAI have demonstrated their potential in generating regulatory queries and validating financial models. By leveraging GenAI models to extract and verify information from government websites, analysts can improve the accuracy of pre-trained financial models. Major financial institutions, including JPMorgan Chase and Bank of America, have begun transitioning their risk modeling frameworks to Python-based infrastructures to facilitate automation and compliance.
+
+Despite progress in sentiment analysis, financial model validation remains an underexplored area. This chapter addresses the gap by proposing a full-stack framework that integrates publicly available GenAI models with proprietary banking risk models while maintaining data privacy and regulatory compliance.
+
+\section{GenAI in Financial Risk Management}
+
+\subsection{Enhancing Credit and Market Risk Assessment}
+Machine learning models have been shown to reduce default risk prediction errors by 25\%, with AI-driven automation decreasing compliance check times by 40\%. The integration of GenAI into financial risk modeling enables improved predictive accuracy and risk mitigation strategies.
+
+\subsection{Synthetic Data for Robust Model Validation}
+Generative models such as Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs) facilitate the creation of synthetic datasets that enhance financial model robustness. These datasets aid in testing risk assessment models without exposing sensitive proprietary data.
+
+\section{Implementation Framework}
+
+\subsection{Regulatory Query Generation and Validation}
+A proposed full-stack framework separates frontend data extraction using ChatGPT and Gemini from backend model validation. By ensuring a secure firewall between public and proprietary models, the system maintains data integrity while improving financial model robustness.
+
+\subsection{Accuracy and Performance Evaluation}
+A survey of risk analysts evaluating GenAI-generated regulatory queries indicated a 70-80\% accuracy rate in question relevance. Further analysis demonstrated that Gemini 2.0 required an average of 10 prompts per query, whereas ChatGPT-4o achieved a similar accuracy level in just 7 prompts.
+
+\section{Proposed Full-Stack Framework}
+
+\subsection{Frontend and Backend Integration}
+The proposed framework employs GenAI models for query generation while protecting proprietary data through a secure backend firewall. This ensures regulatory compliance while maintaining the confidentiality of financial models.
+
+\subsection{Use of Pre-Trained Transformers}
+Pre-trained transformer models, such as all-MiniLM-L6-v2, are leveraged to refine regulatory queries and optimize model validation. The framework integrates AI-driven sentence embedding techniques to match regulatory requirements with financial models.
+
+\section{Conclusion}
+The proposed GenAI-based financial risk modeling framework enhances regulatory compliance and model robustness by integrating automated query generation with secure validation mechanisms. Future work includes expanding query datasets, refining model adaptability, and enhancing real-time risk assessment capabilities. The continued evolution of GenAI will play a critical role in shaping resilient and efficient financial regulatory frameworks.
+
+
+
 \chapter{Generative AI Agents in Financial Applications}
 
 Generative AI is revolutionizing the financial industry by offering innovative solutions to long-standing challenges. The deployment of AI agents across diverse domains like risk management, fraud detection, investment strategies, stock market analysis, and customer engagement has brought about measurable improvements in operational efficiency, decision-making accuracy, and overall system performance. This chapter explores the foundational frameworks, model architectures, and practical implementations of generative AI agents while highlighting their transformative potential.
@@ -887,6 +928,54 @@ Prompt engineering stands at the forefront of financial AI innovation, enabling 
 
 
 \chapter{Enhancing Structured Finance Risk Models Using GenAI}
+
+
+Generative Artificial Intelligence (GenAI), particularly Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs), has emerged as a powerful tool in structured finance. This chapter explores the integration of GenAI with the Leland-Toft and Box-Cox frameworks, demonstrating its utility in risk assessment, bankruptcy prediction, and financial forecasting.
+
+\section{Introduction}
+Structured finance relies on statistical and structural models such as the Box-Cox transformation and the Leland-Toft framework. These models have played a crucial role in financial risk management, bankruptcy prediction, and credit-risk assessment. However, challenges persist in integrating modern machine learning techniques, particularly artificial data generation, into these models. 
+
+Recent advancements in GenAI have opened new avenues for overcoming these limitations. By leveraging synthetic data, financial models can improve their robustness and predictive power, mitigating the data scarcity problem and enhancing model adaptability. This chapter examines how VAEs and GANs can be incorporated into structured finance risk models to refine their accuracy and expand their applicability.
+
+\section{Integration of GenAI with Financial Models}
+
+\subsection{Enhancing Predictive Analytics}
+Training AI models on large datasets has demonstrated improvements in forecasting accuracy, with up to 40\% gains in certain applications. The integration of VAEs and GANs allows for the refinement of data quality, reducing dependency on scarce real-world financial datasets.
+
+\subsection{Synthetic Data for Risk Assessment}
+GenAI-generated synthetic data mimics real financial conditions, providing valuable insights for model validation and risk management. GANs, for example, have been deployed to simulate financial transactions, aiding in fraud detection and privacy-preserving analytics.
+
+\section{Applications in Financial Risk Modeling}
+
+\subsection{Leland-Toft Model with VAEs}
+The Leland-Toft model is widely used for predicting corporate bankruptcy and assessing optimal capital structures. By incorporating VAEs, synthetic financial data can be generated to enhance the model’s accuracy. The following equation defines the Leland-Toft framework:
+
+\begin{equation}
+	V_t = \frac{(1 - \tau) EBIT}{r - \lambda} - \frac{C}{(r + \lambda)}
+\end{equation}
+
+where $V_t$ represents firm value, $\tau$ is the corporate tax rate, $EBIT$ is earnings before interest and taxes, $r$ is the risk-free interest rate, $\lambda$ is the bankruptcy cost, and $C$ represents outstanding debt.
+
+\subsection{Box-Cox Transformation with VAEs}
+Box-Cox transformations are essential for stabilizing variance and improving normality in financial datasets. The Box-Cox transformation is given by:
+
+\begin{equation}
+	Y(\lambda) = \frac{Y^{\lambda} - 1}{\lambda}, \quad \text{for } \lambda \neq 0
+\end{equation}
+
+By integrating VAEs, latent features such as $\text{latent}_1$ and $\text{latent}_2$ can be generated, correlating effectively with traditional financial indicators.
+
+\section{Future Research Directions}
+To fully exploit the potential of GenAI in financial risk modeling, future research should explore:
+\begin{itemize}
+	\item Utilizing idle computational resources for continuous learning and synthetic data generation.
+	\item Developing full-stack frameworks that integrate GenAI with structured financial models.
+	\item Enhancing real-time adaptability of these models for dynamic risk assessment.
+\end{itemize}
+
+\section{Conclusion}
+The integration of Generative AI with structured finance models represents a paradigm shift in financial risk assessment. By leveraging synthetic data and machine learning techniques, financial institutions can improve predictive analytics, enhance model reliability, and optimize decision-making processes. As GenAI continues to evolve, its synergy with traditional financial frameworks will play a crucial role in shaping the future of risk management.
+
 
 \section*{Abstract}
 This chapter explores the integration of generative artificial intelligence (GenAI), specifically Variational Autoencoders (VAEs), into statistical and structural financial models, focusing on the Leland-Toft and Box-Cox frameworks. We highlight the application of VAEs in enhancing data generation, improving predictive accuracy, and enabling robust validation of financial models, particularly in scenarios with scarce data. The integration of VAEs into these models facilitates the calculation of key financial metrics, such as default spreads, credit spreads, and leverage ratios, while generating latent features that effectively correlate with traditional financial factors. These advancements provide a foundation for future research in financial modeling.
